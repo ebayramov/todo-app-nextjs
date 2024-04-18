@@ -1,0 +1,9 @@
+.show {
+    display: initial!important;
+}
+
+.rmvbutton {
+    margin-right: 15px;
+    padding: 4.2px 7.8px !important;
+    border: none;
+}
