@@ -8,7 +8,7 @@ export const addTodo = async (data) => {
     task: data.get("task"),
     dueDate: data.get("dueDate"),
   }
-  await axios.post("http://localhost:3000/api/todos/", newTodoBody)
+  await axios.post("/api/todos/", newTodoBody)
   revalidateTag("ToDo")
   redirect("/")
 }
@@ -17,7 +17,7 @@ export const deleteTodo = async (id) => {
   const deleteBody = {
       id: id
   };  
-  await fetch("http://localhost:3000/api/todos/", {
+  await fetch("/api/todos/", {
       method: "DELETE",
       headers: {
           "Content-Type": "application/json"
