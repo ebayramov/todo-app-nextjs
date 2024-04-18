@@ -5,8 +5,8 @@ export async function GET(request) {
     const filePath = path.join(process.cwd(), 'public', 'data.json')
     const fileContents = fs.readFileSync(filePath, 'utf8')
     const data = JSON.parse(fileContents)
-
-    return Response.json({ data })
+    
+    return Response.json({data})
 }
 
 export async function POST(request) {
@@ -23,7 +23,7 @@ export async function POST(request) {
     currentData.push(newTask);
     fs.writeFileSync(filePath, JSON.stringify(currentData, null, 2))
 
-    return Response.json({ "status": 201, message: 'Task added successfully!' })
+    return Response.json({"status":201, message: 'Task added successfully!'})
 }
 
 export async function DELETE(request) {
@@ -32,10 +32,10 @@ export async function DELETE(request) {
     const currentData = JSON.parse(fileContents);
     const data = await request.json();
     const idToDelete = data.id;
-    const index = currentData.findIndex(item => item.id === idToDelete);
-    currentData.splice(index, 1);
-    fs.writeFileSync(filePath, JSON.stringify(currentData, null, 2));
-    return new Response({ "status": 200, "message": "Task deleted successfully!" });
+    const index = currentData.findIndex(item => item.id === idToDelete);   
+        currentData.splice(index, 1);
+        fs.writeFileSync(filePath, JSON.stringify(currentData, null, 2));
+        return new Response({"status": 200, "message": "Task deleted successfully!"});    
 }
 
 
